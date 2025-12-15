@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <title>KANIFING EAST SSS - Modern Official Website</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* === COLOR DEFINITIONS (GAMBIAN FLAG THEME) === */
+        :root {
+            --color-primary: #0C1E4F;    /* Deep Blue/Indigo */
+            --color-secondary: #C8102E;  /* Red */
+            --color-accent: #005F19;     /* Green */
+            --color-white: #FFFFFF;
+            --color-gray-light: #f9f9f9;
+            --color-gray-medium: #e0e0e0;
+            --color-text-dark: #333;
+            --color-shadow: rgba(0, 0, 0, 0.1);
+        }
+
+        /* === GLOBAL STYLES & TYPOGRAPHY === */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--color-gray-light);
+            margin: 0;
+            padding-top: 80px; /* Space for fixed header */
+            color: var(--color-text-dark);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+            /* Extra stability for mobile: prevent text size adjustment */
+            -webkit-text-size-adjust: 100%;
+        }
+        
+        /* Layout Structure */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 60px 0;
+            margin-bottom: 20px;
+        }
+        .section-light { background-color: var(--color-white); }
+        .section-colored { background-color: var(--color-gray-light); }
+        .section-dark { background-color: var(--color-primary); color: var(--color-white); }
+
+        /* Headings */
+        h2.section-title {
+            font-size: 2.5em;
+            font-weight: 700;
+            color: var(--color-primary);
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        h2.section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--color-accent);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+        .section-dark h2.section-title { color: var(--color-white); }
+        .section-dark h2.section-title::after { background: var(--color-secondary); }
+
+        h3 {
+            color: var(--color-accent);
+            font-weight: 600;
+            margin-top: 25px;
+        }
+        
+        /* Buttons/CTA (Main Page) */
+        .cta-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--color-accent);
+            color: var(--color-white);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s, transform 0.3s;
+            border: 2px solid var(--color-accent);
+            margin-top: 20px;
+        }
+        .cta-button:hover {
+            background: var(--color-primary);
+            border-color: var(--color-primary);
+            transform: translateY(-2px);
+        }
+
+        /* Card Component (Used for features, resources, etc.) */
+        .feature-card {
+            background: var(--color-white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 8px 15px var(--color-shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+            height: 100%;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+        }
+        .feature-card h3 {
+            margin-top: 0;
+            color: var(--color-primary);
+            border-bottom: 2px solid var(--color-secondary);
+            padding-bottom: 10px;
+        }
+
+        /* === HEADER AND NAVIGATION === */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--color-primary);
+            box-shadow: 0 2px 10px var(--color-shadow);
+            z-index: 1000;
+        }
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 40px;
+        }
+        .school-logo {
+            font-size: 1.5em;
+            font-weight: 900;
+            color: var(--color-white);
+            text-transform: uppercase;
+        }
+        .school-logo span {
+            color: var(--color-secondary);
+            font-weight: 700;
+        }
+        nav a {
+            color: var(--color-white);
+            text-decoration: none;
+            padding: 8px 15px;
+            margin: 0 5px;
+            font-weight: 500;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        nav a:hover {
+            background-color: var(--color-accent);
+            color: var(--color-white);
+        }
+        .nav-apply {
+            background-color: var(--color-accent) !important;
+            padding: 8px 20px !important;
+            margin-left: 15px !important;
+        }
+        .nav-apply:hover {
+            background-color: var(--color-secondary) !important;
+        }
+
+        /* === HERO SECTION === */
+        .hero-section {
+            height: 450px;
+            background: url('YOUR/SCHOOL/BANNER/IMAGE.jpg') center/cover no-repeat, linear-gradient(135deg, var(--color-primary), var(--color-accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+        .hero-overlay {
+            background: rgba(0, 0, 0, 0.65);
+            padding: 40px 20px;
+            border-radius: 10px;
+        }
+        .hero-overlay h1 {
+            color: var(--color-white);
+            font-size: 3.5em;
+            margin-bottom: 15px;
+            font-weight: 800;
+            text-shadow: 1px 1px 3px var(--color-text-dark);
+            line-height: 1.2;
+        }
+        .hero-overlay p {
+            color: var(--color-gray-light);
+            font-size: 1.3em;
+            margin-bottom: 30px;
+        }
+
+        /* === GRID LAYOUTS === */
+        .three-column-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        .two-column-layout {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            align-items: start;
+        }
+        .layout-reverse {
+            grid-template-columns: 2fr 1fr;
+        }
+
+        /* Academics/Features */
+        .academic-point {
+            border-left: 4px solid var(--color-accent);
+            padding-left: 15px;
+            margin-bottom: 20px;
+        }
+        .academic-point h4 {
+            color: var(--color-primary);
+            font-weight: 700;
+            margin: 0 0 5px 0;
+        }
+        .academic-point p {
+            font-size: 0.95em;
+        }
+        
+        /* Sidebar/Quick Links */
+        .sidebar-links {
+            padding: 20px;
+            background: var(--color-white);
+            border: 1px solid var(--color-gray-medium);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px var(--color-shadow);
+        }
+        .sidebar-links h3 {
+            border-bottom: 1px solid var(--color-gray-medium);
+            padding-bottom: 10px;
+            margin-top: 0;
+            color: var(--color-secondary);
+        }
+        .sidebar-links ul {
+            list-style: none;
+            padding: 0;
+        }
+        .sidebar-links li {
+            margin-bottom: 10px;
+        }
+        .sidebar-links a {
+            text-decoration: none;
+            color: var(--color-primary);
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .sidebar-links a:hover {
+            color: var(--color-accent);
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 25px;
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            font-size: 0.9em;
+        }
+
+        /* === FORM MODAL (Kept static and responsive within non-zoomable environment) === */
+        #application-form-wrapper {
+            display: none; 
+            position: fixed;
+            z-index: 2000; /* Higher than header */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow-y: auto; /* Allows scrolling inside modal */
+            background-color: rgba(0, 0, 0, 0.9); 
+            padding: 20px 0;
+            backdrop-filter: blur(5px);
+        }
+        .form-container {
+            max-width: 900px;
+            margin: 20px auto; 
+            background: var(--color-white); 
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 30px rgba(var(--color-secondary), 0.9);
+            border: 4px solid var(--color-secondary);
+            position: relative;
+        }
+        .close-form-btn {
+            position: absolute;
+            top: 10px;
+            right: 25px;
+            color: var(--color-secondary);
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+            background: none;
+        }
+        .close-form-btn:hover {
+            color: var(--color-primary);
+        }
+        .section {
+            background: var(--color-gray-light);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            border: 1px dashed var(--color-accent);
+        }
+        .form-container input, .form-container select, .form-container textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 15px;
+            background: #f9f9f9;
+            box-sizing: border-box; 
+        }
+        .transfer-section {
+            display: none;
+        }
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            margin-top: 30px;
+            background-color: var(--color-accent);
+            color: var(--color-white);
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .submit-btn:hover {
+            background-color: var(--color-primary);
+        }
+        .developer-footer {
+            text-align: center;
+            font-size: 0.8em;
+            color: #777;
+            margin-top: 20px;
+            padding-top: 10px;
+            border-top: 1px solid #eee;
+        }
+        .developer-footer .contact {
+            display: block;
+            margin-top: 5px;
+            color: var(--color-secondary);
+            }
+        
+        /* Form-Specific Styles from Request */
+        .form-header-name {
+            text-align: center;
+            color: var(--color-primary); /* Blue color */
+            font-size: 1.8em;
+            font-weight: 800;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .form-container h2 {
+            color: var(--color-accent); /* Green Title */
+            border-bottom: 3px solid var(--color-secondary); /* Red accent line */
+            padding-bottom: 10px;
+            text-align: center;
+            margin-top: 5px;
+        }
+        .form-container h3 {
+            color: var(--color-primary); /* Blue section title */
+            margin-top: 40px;
+            margin-bottom: 10px;
+            border-left: 5px solid var(--color-accent); /* Green accent bar */
+            padding-left: 10px;
+        }
+        .form-container label {
+            color: var(--color-primary); /* Blue label text */
+        }
+        .form-container input[readonly] {
+            background: #ecf0f1;
+            font-weight: 900; 
+            color: #7f8c8d; 
+            text-align: center; 
+            letter-spacing: 5px; 
+        }
+
+        /* === FORM CTA BUTTONS STYLES (MATCHING THE REQUESTED STANDALONE FORM) === */
+        .cta-buttons-form {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #ddd;
+        }
+        
+        .cta-button-form {
+            flex: 1;
+            text-align: center;
+            padding: 12px 10px;
+            border-radius: 8px;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: background-color 0.3s, transform 0.2s;
+            border: 2px solid;
+            cursor: pointer;
+        }
+        
+        #apply-now-form {
+            background: var(--color-secondary); /* Red button */
+            color: var(--color-white);
+            border-color: var(--color-secondary);
+        }
+        
+        #apply-now-form:hover {
+            background: var(--color-primary); /* Blue hover */
+            border-color: var(--color-primary);
+            transform: translateY(-2px);
+        }
+        
+        #start-application-form {
+            background: var(--color-accent); /* Green button */
+            color: var(--color-white);
+            border-color: var(--color-accent);
+        }
+        
+        #start-application-form:hover {
+            background: var(--color-secondary); /* Red hover */
+            border-color: var(--color-secondary);
+            transform: translateY(-2px);
+        }
+
+
+        /* === MEDIA QUERIES for Responsiveness (Ensures content fits non-zoomable screen) === */
+        @media (max-width: 1024px) {
+            .two-column-layout {
+                grid-template-columns: 1fr;
+            }
+            .layout-reverse {
+                grid-template-columns: 1fr;
+            }
+            .hero-overlay h1 {
+                font-size: 2.5em;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-content {
+                flex-direction: column;
+                padding: 10px 20px;
+            }
+            nav {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                margin-top: 10px;
+            }
+            nav a {
+                margin: 5px;
+                padding: 5px 10px;
+                font-size: 0.9em;
+            }
+            body {
+                padding-top: 120px;
+            }
+            .hero-section {
+                height: 350px;
+            }
+            h2.section-title {
+                font-size: 2em;
+            }
+            .form-container {
+                margin: 10px;
+                padding: 20px;
+            }
+            /* Form CTA buttons stack on smaller screens */
+            .cta-buttons-form {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-content">
+            <div class="school-logo">KANIFING EAST <span>SSS</span></div>
+            <nav>
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#academics">Academics</a>
+                <a href="#staffs">Staff</a>
+                <a href="#resources">Resources</a>
+                <a href="#news">News</a>
+                <a href="#contact">Contact</a>
+                <a href="#" id="nav-apply-link" class="nav-apply">APPLY NOW</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero-section" id="home">
+        <div class="hero-overlay">
+            <h1>SHAPING THE FUTURE, ONE STUDENT AT A TIME</h1>
+            <p>Providing quality senior secondary education in The Gambia. Knowledge, Unity, Excellence</p>
+            <a href="#" id="open-form-link-hero" class="cta-button">Start Your Application Today</a>
+        </div>
+    </section>
+
+    <section class="section-light" id="about">
+        <div class="container two-column-layout">
+            <div class="sidebar-links">
+                <h3>Quick Resources</h3>
+                <ul class="content-list">
+                    <li><a href="Others/Examination Timetable.html">&#10148; Examination Timetable</a></li>
+                    <li><a href="Others/Past Exam papers.html">&#10148; Past Exam Papers</a></li>
+                    <li><a href="Others/School Calenders.html">&#10148; School Calendar & Events</a></li>
+                    <li><a href="Others/Action plan 2025.html">&#10148; 2025 Action Plan</a></li>
+                </ul>
+                <div style="background: var(--color-primary); color: var(--color-white); padding: 15px; border-radius: 8px; margin-top: 20px;">
+                    <h3 style="color: var(--color-secondary); border: none;">Newsletter Signup</h3>
+                    <p style="font-size: 0.9em;">Stay updated with our latest news and achievements.</p>
+                    <form>
+                        <input type="email" placeholder="Enter Email....." required style="border: 1px solid var(--color-secondary); margin-bottom: 10px; padding: 8px; border-radius: 5px; width: 100%;">
+                        <button type="submit" style="background-color: var(--color-accent); color: var(--color-white); width: 100%; padding: 10px; border: none; border-radius: 5px; cursor: pointer; font-weight: 700;">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="main-content">
+                <h2 class="section-title" style="text-align: left;">Welcome to KESSS</h2>
+                <p>We are delighted to welcome you to the official online home of Kanifing East Senior Secondary School. Our institution is dedicated to fostering a rich environment for academic excellence, character development, and civic responsibility. We believe in nurturing the potential of every student to become a confident and successful leader of tomorrow. </p>
+                <p>Explore our programs, meet our dedicated faculty, and discover why KESSS is the premier choice for senior secondary education in the region. We are committed to maintaining high standards of discipline and learning, ensuring a brighter future for all our graduates.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-colored" id="academics">
+        <div class="container">
+            <h2 class="section-title">Our Academic Excellence</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 40px;">At Kanifing East Senior Secondary School, our curriculum is designed to provide students with the skills, knowledge, and confidence they need to excel in a rapidly evolving world.</p>
+
+            <div class="three-column-grid">
+                <div class="feature-card">
+                    <h3>Academic Streams</h3>
+                    <p>We offer diverse streams to prepare students for higher education and professional life:</p>
+                    <ul>
+                        <li>Science Stream: Engineering, Medicine, Research.</li>
+                        <li>Commerce Stream: Business, Accounting, Finance.</li>
+                        <li>Art Stream: Literature, History, Critical Thinking.</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <h3>Curriculum Focus</h3>
+                    <div class="academic-point">
+                        <h4>Technology-Driven</h4>
+                        <p>Interactive learning tools, coding, and STEM-focused projects prepare students for the digital world.</p>
+                    </div>
+                    <div class="academic-point">
+                        <h4>Global Perspective</h4>
+                        <p>We encourage a global outlook through multicultural studies and international collaborations.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <h3>Beyond the Classroom</h3>
+                    <div class="academic-point">
+                        <h4>Hands-on Learning</h4>
+                        <p>Students participate in field trips, science fairs, and creative writing competitions.</p>
+                    </div>
+                    <div class="academic-point">
+                        <h4>Support for All</h4>
+                        <p>Special education services, gifted programs, and dedicated counseling ensure every student thrives.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section-light" id="students-life">
+        <div class="container">
+            <h2 class="section-title">Vibrant Student Life</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 40px;">Education is about creating memorable experiences that shape our students into well-rounded, confident individuals.</p>
+            <div class="three-column-grid">
+                <div class="feature-card">
+                    <h3>Sports Programs</h3>
+                    <p>From football and basketball to track, our sports teams cultivate teamwork, discipline, and a strong spirit of competition.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Clubs and Societies</h3>
+                    <p>Students can join various clubs like the Debate Club, Science Club, Drama Society, or Chess Club to explore and develop their passions.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Community & Art</h3>
+                    <p>We encourage creative expression through visual arts, music programs, and foster responsibility through community service projects.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-dark" id="staffs">
+        <div class="container">
+            <h2 class="section-title">Our Dedicated Staff & Faculty</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 40px; color: var(--color-gray-light);">We believe our dedicated staff forms the foundation of our students' success, fostering excellence, teamwork, and integrity.</p>
+            
+            <div class="three-column-grid">
+                <div class="feature-card">
+                    <h3 style="color: var(--color-primary);">Core Values</h3>
+                    <ul>
+                        <li>Commitment to Excellence</li>
+                        <li>Collaborative Teamwork</li>
+                        <li>Integrity and Responsibility</li>
+                        <li>Innovation in Education</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <h3 style="color: var(--color-primary);">Key Departments</h3>
+                    <ul>
+                        <li>Teaching Faculty (Academic Growth)</li>
+                        <li>Administrative Team (Smooth Operations)</li>
+                        <li>Student Service & Support (Mentorship)</li>
+                        <li>ICT and Innovation Team (Tech Advancement)</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <h3 style="color: var(--color-primary);">Professional Growth</h3>
+                    <p>We invest heavily in continuous learning through workshops, programs, and collaborative initiatives, ensuring our educators stay ahead of modern educational trends.</p>
+                    <a href="#resources" class="cta-button" style="background: var(--color-secondary); border-color: var(--color-secondary);">Staff Portal Resources</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section-colored" id="resources">
+        <div class="container">
+            <h2 class="section-title">School Resources Hub</h2>
+            <div class="two-column-layout layout-reverse">
+                <div class="main-content">
+                    <h3>Academic & Digital Tools</h3>
+                    <div class="three-column-grid" style="gap: 15px;">
+                        <div class="feature-card" style="padding: 20px;">
+                            <h4 style="color: var(--color-accent); margin-top: 0;">Curriculum & Textbooks</h4>
+                            <p style="font-size: 0.9em;">Detailed outlines and digital copies of key subject materials.</p>
+                        </div>
+                        <div class="feature-card" style="padding: 20px;">
+                            <h4 style="color: var(--color-accent); margin-top: 0;">Online Learning Platforms</h4>
+                            <p style="font-size: 0.9em;">Links to Khan Academy, Google Classroom, and research databases.</p>
+                        </div>
+                        <div class="feature-card" style="padding: 20px;">
+                            <h4 style="color: var(--color-accent); margin-top: 0;">LMS Portal</h4>
+                            <p style="font-size: 0.9em;">Your portal for assignments, homework submission, and announcements.</p>
+                        </div>
+                        <div class="feature-card" style="padding: 20px;">
+                            <h4 style="color: var(--color-accent); margin-top: 0;">Coding Guides</h4>
+                            <p style="font-size: 0.9em;">Beginner-friendly guides for Python, JavaScript, HTML, and CSS.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="sidebar-links" style="padding: 30px;">
+                    <h3>Policies & Guidance</h3>
+                    <ul class="content-list">
+                        <li>Student Code of Conduct</li>
+                        <li>Attendance and Absence Policy</li>
+                        <li>Examination Rules</li>
+                        <li>ICT and Digital Use Policies</li>
+                        <li>Scholarship & Financial Aid</li>
+                        <li>Counselling and Guidance Services</li>
+                    </ul>
+                    <a href="#contact" class="cta-button">Need IT Support? Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-light" id="news">
+        <div class="container">
+            <h2 class="section-title">News & Events</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 40px;">Stay updated with the latest happenings and achievements at Kanifing East Senior Secondary School.</p>
+            
+            <div class="two-column-layout">
+                <div>
+                    <h3>Upcoming Events</h3>
+                    <ul class="content-list">
+                        <li>Annual Science Fair - May 10, 2025</li>
+                        <li>Sports Day - June 5, 2025</li>
+                        <li>Graduation Ceremony - July 20, 2025</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Recent Achievements</h3>
+                    <ul class="content-list">
+                        <li>Winner of National Math Olympiad</li>
+                        <li>Basketball Team wins regional championship</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-colored" id="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 40px;">We are here to assist you with any questions regarding admissions, academics, or student life.</p>
+
+            <div class="three-column-grid" style="grid-template-columns: repeat(3, 1fr); text-align: center;">
+                <div class="feature-card">
+                    <h3 style="color: var(--color-primary); border: none;">Location</h3>
+                    <p style="font-weight: 600;">Kanifing East Senior Secondary School</p>
+                    <p style="font-size: 0.9em;">[Insert Full Physical Address Here]</p>
+                </div>
+                <div class="feature-card">
+                    <h3 style="color: var(--color-primary); border: none;">Admissions</h3>
+                    <p style="font-weight: 600; color: var(--color-accent);">+220 XXX XXXX</p>
+                    <p style="font-size: 0.9em;">admissions@kanifingeastsss.edu.gm</p>
+                </div>
+                <div class="feature-card">
+                    <h3 style="color: var(--color-primary); border: none;">Administration</h3>
+                    <p style="font-weight: 600; color: var(--color-accent);">+220 XXX XXXX</p>
+                    <p style="font-size: 0.9em;">info@kanifingeastsss.edu.gm</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <div id="application-form-wrapper">
+        <form class="form-container">
+            <button type="button" class="close-form-btn" id="close-form-btn" aria-label="Close Application Form">&times;</button>
+            
+            <div class="cta-buttons-form">
+                <a href="#" class="cta-button-form" id="apply-now-form">Apply Now</a>
+                <a href="#" class="cta-button-form" id="start-application-form">Start Your Application Today</a>
+            </div>
+            
+            <div class="form-header-name">KANIFING EAST SENIOR SECONDARY SCHOOL</div>
+            
+            <h2>Student Application Form</h2>
+
+            <div class="section">
+                <h3>Applicant Information</h3>
+                <div class="form-group"><label>Application ID (Will be provided upon acceptance)</label><input type="text" id="application_id" name="application_id" value="********" readonly /></div>
+                <div class="form-group"><label>Full Name (First, Middle, Last)</label><input type="text" name="fullname" required /></div>
+                <div class="form-group"><label>Gender</label><select name="gender" required><option value="">-- Select Gender --</option><option>Male</option><option>Female</option></select></div>
+                <div class="form-group"><label>Date of Birth</label><input type="date" name="dob" required /></div>
+                <div class="form-group"><label>Place of Birth</label><input type="text" name="place_of_birth" required /></div>
+                <div class="form-group"><label>Nationality</label><input type="text" name="nationality" value="Gambian" required /></div>
+                <div class="form-group"><label>Parent/Guardian Name</label><input type="text" name="guardian_name" required /></div>
+                <div class="form-group"><label>Student Contact</label><input type="tel" name="student_contact" required /></div>
+                <div class="form-group"><label>Parent/Guardian Contact</label><input type="tel" name="guardian_contact" required /></div>
+                <div class="form-group"><label>Passport Photo Upload</label><input type="file" name="passport_photo" accept="image/*" required /></div>
+                <div class="form-group"><label>Birth Certificate or National ID Upload</label><input type="file" name="id_document" accept="image/*,application/pdf" required /></div>
+            </div>
+
+            <div class="section">
+                <h3>Academic Information</h3>
+                <div class="form-group"><label for="transfer_type">Transfer Type</label><select id="transfer_type" name="transfer_type" required><option value="">-- Select Transfer Type --</option><option value="UB_to_SS">Upper Basic to Senior Secondary</option><option value="UB_to_UB">Upper Basic to Upper Basic</option><option value="SS_to_SS">Senior Secondary to Senior Secondary</option></select></div>
+
+                <div id="UB_to_SS_section" class="transfer-section">
+                    <h3>Upper Basic to Senior Secondary Transfer</h3><p style="color: var(--color-secondary); font-weight: bold;">(Grade 9 to 10)</p>
+                    <div class="form-group"><label for="student_field">Student's Choice of Field</label><select id="student_field" name="student_field"><option value="">-- Select Field --</option><option>Art</option><option>Commerce</option><option>Science</option></select></div>
+                    <div class="form-group"><label>Previous School Name</label><input type="text" name="previous_school" /></div>
+                    <div class="form-group"><label>Year of GABECE Exam</label><input type="number" name="exam_year" placeholder="e.g. 2024" /></div>
+                    <div class="form-group"><label>Upload GABECE Result</label><input type="file" name="gabece_result" accept="image/*,application/pdf" /></div>
+                </div>
+
+                <div id="UB_to_UB_section" class="transfer-section">
+                    <h3>Upper Basic to Upper Basic Transfer</h3>
+                    <div class="form-group"><label>Previous School Name</label><input type="text" name="ub_previous_school" /></div>
+                    <div class="form-group"><label>From Grade</label><select name="ub_from_grade"><option value="">-- Select Grade --</option><option>7</option><option>8</option><option>9</option></select></div>
+                    <div class="form-group"><label>To Grade</label><select name="ub_to_grade"><option value="">-- Select Grade --</option><option>7</option><option>8</option><option>9</option></select></div>
+                    <div class="form-group"><label>Upload Recent Academic Report</label><input type="file" name="ub_academic_report" accept="image/*,application/pdf" /></div>
+                </div>
+
+                <div id="SS_to_SS_section" class="transfer-section">
+                    <h3>Senior Secondary to Senior Secondary Transfer</h3>
+                    <div class="form-group"><label>Previous School Name</label><input type="text" name="ss_previous_school" /></div>
+                    <div class="form-group"><label>From Grade</label><select name="ss_from_grade"><option value="">-- Current field of study --</option><option>ART</option><option>SCIENCE</option><option>COMMERCE</option></select></div>
+                     <div class="form-group"><label>From Grade</label><select name="ss_from_grade"><option value="">-- Select Grade --</option><option>10</option><option>11</option><option>12</option></select></div>
+                    <div class="form-group"><label>To Grade</label><select name="ss_to_grade"><option value="">-- Select Grade --</option><option>10</option><option>11</option><option>12</option></select></div>
+                    <div class="form-group"><label>Upload Recent Academic Report</label><input type="file" name="ss_academic_report" accept="image/*,application/pdf" /></div>
+                </div>
+            </div>
+            
+            <button type="submit" class="submit-btn">Submit Application</button>
+            
+            <div class="developer-footer">
+                Developed and powered by [CampusCore Tech]
+                <span class="contact">For more info contact +233 24 477 5129 / +220 312 6997</span>
+            </div>
+        </form>
+    </div>
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Kanifing East Senior Secondary School. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // --- TRANSFER TYPE TOGGLE FUNCTIONALITY (Form logic) ---
+        const transferTypeDropdown = document.getElementById('transfer_type');
+        const ubToSsSection = document.getElementById('UB_to_SS_section');
+        const ubToUbSection = document.getElementById('UB_to_UB_section');
+        const ssToSsSection = document.getElementById('SS_to_SS_section');
+
+        function toggleTransferSections() {
+            const selectedValue = transferTypeDropdown ? transferTypeDropdown.value : null;
+            const studentFieldSelect = document.getElementById('student_field');
+
+            if (ubToSsSection) ubToSsSection.style.display = 'none';
+            if (ubToUbSection) ubToUbSection.style.display = 'none';
+            if (ssToSsSection) ssToSsSection.style.display = 'none';
+            
+            if (studentFieldSelect) {
+                studentFieldSelect.required = (selectedValue === 'UB_to_SS');
+            }
+
+            if (selectedValue === 'UB_to_SS' && ubToSsSection) {
+                ubToSsSection.style.display = 'block';
+            } else if (selectedValue === 'UB_to_UB' && ubToUbSection) {
+                ubToUbSection.style.display = 'block';
+            } else if (selectedValue === 'SS_to_SS' && ssToSsSection) {
+                ssToSsSection.style.display = 'block';
+            }
+        }
+
+        // --- FORM MODAL TOGGLE FUNCTIONALITY (Main Page Link) ---
+        const formWrapper = document.getElementById('application-form-wrapper');
+        const openLinkHero = document.getElementById('open-form-link-hero'); // CTA in Hero
+        const navApplyLink = document.getElementById('nav-apply-link');
+        const closeBtn = document.getElementById('close-form-btn');
+
+        function openForm(e) {
+             e.preventDefault(); 
+             formWrapper.style.display = 'block';
+             // This line forces the scroll to the top of the form modal
+             formWrapper.scrollTo(0, 0); 
+
+             if (transferTypeDropdown) {
+                 toggleTransferSections();
+             }
+        }
+
+        // 1. Attach to the "APPLY NOW" button in the Hero
+        if (openLinkHero && formWrapper) {
+            openLinkHero.addEventListener('click', openForm);
+        }
+        
+        // 2. Attach to the "APPLY NOW" link in the main navigation
+        if (navApplyLink && formWrapper) {
+             navApplyLink.addEventListener('click', openForm);
+        }
+
+        // Function to HIDE the form when the "X" button is clicked
+        if (closeBtn && formWrapper) {
+            closeBtn.addEventListener('click', function() {
+                formWrapper.style.display = 'none';
+            });
+        }
+        
+        // Hide form if user clicks outside the form container 
+        window.addEventListener('click', function(event) {
+            if (event.target === formWrapper) {
+                formWrapper.style.display = "none";
+            }
+        });
+
+        // --- INITIALIZATION ---
+        if (transferTypeDropdown) {
+            transferTypeDropdown.addEventListener('change', toggleTransferSections);
+            toggleTransferSections();
+        }
+    </script>
+
+</body>
+</html>S
